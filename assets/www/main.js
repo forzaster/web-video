@@ -34,10 +34,13 @@ function onVideoReadEntries(entries) {
 		isFirst = false;
 	    }
 	    var item = document.createElement("li");
-	    item.innerHTML = "<a href=\"#\">" + "<img src=\"" + posterPath
-		+ "\" alt=\"" + videoPath
-		+ "\" onclick=\"onClickPoster(\'"
-		+ videoPath + "\',\'" + posterPath + "\')\"/></a>";
+	    item.innerHTML = "<a href=\"#\">"
+		+ "<div class=\"cover\" "
+		+ "style=\"background-image: url(\'" + posterPath
+		+ "\')\">" + "<button data-role=\"none\" "
+		+ "class=\"listitem\" type\"button\" "
+		+ "onclick=\"onClickPoster(\'" + videoPath
+		+ "\',\'" + posterPath + "\')\"/></div></a>";
 	    list.appendChild(item);
 	}
     }
@@ -55,9 +58,11 @@ function loadVideo(videoPath, posterPath) {
     if (prevVideo != null) {
 	player.removeChild(prevVideo);
     }
-/*
-    player.innerHTML="<video id=\"video\" src=\"" + videoPath + "\" width=\"" + videoWidth + "\" controls autoplay preload=\"none\" poster=\"" + posterPath + "\"/>";
-*/
+    var prevTitle = document.getElementById("video_title");
+    if (prevTitle != null) {
+	player.removeChild(prevTitle);
+    }
+
     var video = document.createElement("video");
     video.id = "video";
     video.poster = posterPath;
@@ -65,6 +70,16 @@ function loadVideo(videoPath, posterPath) {
     video.innerHTML = "<source src=\"" + videoPath + "\" type=\"video/mp4\" />"
     video.setAttribute("controls");
     player.appendChild(video);
+
+    var s = videoPath.lastIndexOf("/");
+    if (s != -1) {
+	var title = videoPath.substr(s+1);
+	var titleEle = document.createElement("p");
+	titleEle.id = "video_title";
+	titleEle.innerHTML = title;
+	player.appendChild(titleEle);
+    }
+
     video.play();
 }
 

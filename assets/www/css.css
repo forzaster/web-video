@@ -37,10 +37,34 @@ div.grid_view img {
     cursor: pointer;
 }
 
+div.grid_view button {
+    width: 110px;
+    height: 110px;
+    background-color: transparent;
+}
+
+div.grid_view button:active {
+    background-color: #ccc;
+    opacity: 0.5;
+}
+
+div.cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 110px;
+    height: 110px;
+    background-size: cover;
+}
+
 video {
     max-width: 100%;
     width: 100%;
     height: 200px;
     overflow: visible;
     background-color: black
+}
+
+#video_title {
+    padding: 5px;
+    text-align: center;
 }
