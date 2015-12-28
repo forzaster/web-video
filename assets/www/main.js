@@ -39,8 +39,8 @@ function onVideoReadEntries(entries) {
 		+ "style=\"background-image: url(\'" + posterPath
 		+ "\')\">" + "<button data-role=\"none\" "
 		+ "class=\"listitem\" type\"button\" "
-		+ "onclick=\"onClickPoster(\'" + videoPath
-		+ "\',\'" + posterPath + "\')\"/></div></a>";
+		+ "onclick=\"onClickPoster(\'"
+                + videoPath + "\',\'" + posterPath + "\')\"/></div></a>";
 	    list.appendChild(item);
 	}
     }
